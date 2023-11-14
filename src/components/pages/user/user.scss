@@ -1,0 +1,36 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+:root {
+  --banner-height: 300px;
+  @media #{$media-mobile} {
+    --banner-height: 175px;
+  }
+}
+
+.user,
+.profile {
+  margin-top: calc(var(--navbar-height) + var(--banner-height));
+  position: relative;
+  &__artist-button {
+    width: unset;
+    padding: 0 24px;
+    margin: 24px 0 42px 0;
+    border-radius: 10px;
+  }
+
+  &__preferences {
+    padding: 0 6rem;
+  }
+
+  @media #{$media-mobile} {
+    h1,
+    button {
+      margin-bottom: 0;
+    }
+
+    &__preferences {
+      padding: 0 4rem;
+    }
+  }
+}

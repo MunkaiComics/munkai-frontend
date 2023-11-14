@@ -1,0 +1,140 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.details {
+  padding-top: 20px;
+  margin: 0 4rem;
+  display: flex;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+
+  &--outer {
+    margin: 64px auto;
+    padding: 20px 0 40px 0;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .image {
+    margin: 0 0 16px 0;
+    width: 16rem;
+    height: 0;
+    border-radius: 25px;
+    padding-top: 152.94%;
+    position: relative;
+    box-shadow: 0px 4px 30px 1px #4fa5d8;
+
+    img {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+    }
+  }
+}
+
+.details-description {
+  max-width: 534px;
+  width: 100%;
+  margin-left: 80px;
+  margin-top: 20px;
+}
+
+.details-description h1 {
+  font-weight: bold;
+}
+
+.details-description p {
+  font-weight: 600;
+}
+
+.details-description .comics {
+  color: #4fa5d8;
+  font-weight: bold;
+  font-size: 23px;
+  cursor: pointer;
+  line-height: 32px;
+}
+
+.details-description h3 {
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 40px;
+}
+
+.details-description .pay {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 1rem;
+  // max-width: 256px;
+  width: max-content;
+}
+
+.details-description .pay p {
+  border-radius: 12px;
+  background-color: #f1f1f1;
+  padding: 15px 20px;
+}
+
+.details-description .pay button {
+  background: #4fa5d8;
+  color: #fff;
+  font-weight: bold;
+  margin: 0;
+  max-width: fit-content;
+  box-sizing: content-box;
+  border: none;
+}
+
+@media #{$media-mobile} {
+  .details {
+    flex-direction: column;
+    text-align: center;
+
+    &--outer {
+      margin-top: 32px;
+      margin-bottom: 0;
+    }
+
+    &-description {
+      margin: 0;
+
+      h1 {
+        font-size: 30px;
+      }
+
+      p {
+        font-size: $font-size--sm;
+      }
+
+      .comics {
+        font-size: $font-size--base;
+      }
+
+      h3 {
+        text-align: left;
+        font-size: $font-size--base;
+        line-height: $font-size--md;
+      }
+
+      .pay {
+        max-width: 200px;
+        margin: 24px auto 0 auto;
+
+        p {
+          font-size: $font-size--base;
+          color: $text-dark;
+        }
+
+        .btn {
+          height: 32px;
+          margin: 0;
+          font-size: $font-size--sm;
+        }
+      }
+    }
+  }
+}

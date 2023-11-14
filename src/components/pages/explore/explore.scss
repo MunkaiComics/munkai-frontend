@@ -1,0 +1,126 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.white-content {
+  .explore__search-input {
+    background: $search-input-gradient--light;
+
+    &-container {
+      color: rgba(35, 52, 71, 0.6);
+    }
+  }
+}
+
+.card__list__container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.card-list--explore {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+
+  .cover-card {
+    width: 100%;
+  }
+}
+
+@media #{$media-mobile} {
+  .card-list.card-list--explore {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+.explore {
+  // padding: 0 4rem;
+  margin-bottom: 32px;
+
+  @media #{$media-mobile} {
+    &-space-fill {
+      display: none;
+    }
+  }
+
+  h1 {
+    margin-bottom: 0;
+  }
+
+  &__filters {
+    @include flex-center();
+
+    width: 70%;
+    max-width: 32rem;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  &__search-input {
+    height: 48px;
+    width: 100%;
+    padding: 0 20px 0 56px;
+    font-weight: $font-weight--bold;
+    color: inherit;
+    border: none;
+    border-radius: $border-radius--xl;
+    background: $search-input-gradient;
+
+    &-container {
+      width: 100%;
+      position: relative;
+      // margin-left: 100px;
+      // margin-right: 24px;
+      color: $text-light;
+
+      svg {
+        height: 24px;
+        width: 24px;
+        position: absolute;
+        left: 16px;
+        bottom: 12px;
+      }
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  @media #{$media-mobile} {
+    flex-direction: column;
+
+    &__filters {
+      width: 100%;
+      margin: 12px 0;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      & > * {
+        width: 100%;
+      }
+
+      .search {
+        flex: unset;
+      }
+    }
+
+    &__search-input {
+      height: 32px;
+      width: 100% !important;
+      padding-left: 36px;
+
+      &-container {
+        width: 100%;
+        margin: 0;
+
+        svg {
+          height: 12px;
+          width: 12px;
+          bottom: 10px;
+        }
+      }
+    }
+
+    &__filter-menu {
+      width: 50%;
+    }
+  }
+}

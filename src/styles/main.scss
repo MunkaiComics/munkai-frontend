@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&family=Iceland&family=Roboto:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,500;1,600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import "variables";
+
+body {
+  font-family: $font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+select {
+  font-family: $font-family;
+}
+
+img {
+  object-fit: cover;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $header-font-family;
+}
+
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  &--explore {
+    .restricted-width & {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    padding: 0 4rem 3rem 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 50px 30px;
+  }
+}
+
+@media #{$media-mobile} {
+  .cover-card {
+    &,
+    .image {
+      width: 200px;
+    }
+
+    .image {
+      height: 250px;
+    }
+  }
+
+  .card-list {
+    grid-template-columns: repeat(1, 1fr);
+
+    > div {
+      margin: 0 auto;
+    }
+  }
+
+  .heading {
+    margin: 0 auto 20px auto;
+    font-size: $font-size--md;
+    text-align: center;
+  }
+
+  .modal-card {
+    width: 85% !important;
+  }
+
+  .form-control {
+    &,
+    &__label {
+      font-size: $font-size--xs;
+    }
+  }
+
+  .form-control__checkbox input {
+    margin-top: 2px;
+  }
+
+  .not-found {
+    h1 {
+      font-size: 150px !important;
+    }
+
+    h6 {
+      font-size: 24px !important;
+    }
+  }
+
+  .first-name {
+    margin-bottom: 12px;
+  }
+
+  .artist-form-action {
+    font-size: $font-size--xs !important;
+  }
+
+  .dark-content .not-found {
+    h1,
+    h6 {
+      color: $text-light !important;
+    }
+  }
+}
+
+.image.zoom-on-hover {
+  overflow: hidden;
+
+  > img {
+    transition-duration: 500ms;
+    transition-timing-function: ease;
+  }
+
+  &:hover > img {
+    transition-duration: 1500ms;
+    transform: scale(1.1);
+  }
+}

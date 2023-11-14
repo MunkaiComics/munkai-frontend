@@ -1,0 +1,157 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.dark-content .card-list-section__action-buttons {
+  button {
+    color: $text-light;
+    background-color: $back-btn-arrow-bg;
+
+    .icon {
+      background-color: $text-light;
+
+      i {
+        color: $back-btn-arrow-bg;
+      }
+    }
+  }
+}
+
+.card-list-section {
+  margin-bottom: 48px;
+
+  &__header {
+    @include flex-center();
+
+    margin-bottom: 28px;
+    justify-content: space-between;
+
+    button {
+      margin: 0;
+    }
+  }
+
+  &__title {
+    font-weight: $font-weight--bold;
+  }
+
+  &__list {
+    @include flex-center();
+
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__footer,
+  &__action-buttons {
+    @include flex-center();
+
+    justify-content: space-between;
+  }
+
+  &__footer {
+    margin-top: 32px;
+  }
+
+  &__action-buttons {
+    button {
+      height: 42px;
+      width: 180px;
+      padding-left: 40px;
+      font-size: $font-size--base;
+      border-radius: 18px;
+      color: $text-dark;
+      background-color: $white;
+
+      &:last-child {
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  &__pagination {
+    margin: 0 24px;
+    font-size: $font-size--base;
+
+    span {
+      font-weight: $font-weight--bold;
+      color: $button-bg;
+    }
+  }
+
+  @media #{$media-mobile} {
+    &__header {
+      flex-direction: column-reverse;
+
+      button {
+        height: 36px;
+        margin-bottom: 16px;
+      }
+    }
+
+    &__title {
+      font-size: $font-size--md;
+    }
+
+    &__footer {
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    &__action-buttons {
+      margin-bottom: 16px;
+
+      button {
+        height: 32px;
+        width: 130px;
+        font-size: $font-size--sm;
+        border-radius: 18px;
+        background-color: $white;
+
+        &:last-child {
+          padding-left: 16px;
+          width: 120px;
+          justify-content: flex-start;
+        }
+      }
+    }
+
+    &__pagination {
+      margin: 0 8px;
+      font-size: $font-size--sm;
+    }
+
+    &__list {
+      justify-content: center;
+
+      > div {
+        display: none;
+
+        &:first-child {
+          display: unset;
+        }
+      }
+    }
+  }
+}
+
+.alice-carousel {
+  &__wrapper {
+    overflow: visible !important;
+  }
+  &__prev-btn, &__next-btn {
+    margin-top: 2rem;
+    &-item {
+      background: $back-btn-arrow-bg;
+      font-size: 1rem !important;
+      height:  2rem !important;
+      width: 2rem !important; 
+      font-weight: 900;
+      line-height: 1.4;
+      text-align: center;
+      border-radius: 50%;
+      color: $button-bg !important;
+
+      
+    }
+  }
+}

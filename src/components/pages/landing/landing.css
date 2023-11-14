@@ -1,0 +1,30 @@
+.nft img {
+  height: 300px;
+  width: 300px;
+}
+
+.arrivals {
+  background: #fbfdff;
+  border-radius: 48px;
+}
+
+.dark {
+  background: linear-gradient(
+    173.77deg,
+    #00022b -11.43%,
+    #233b49 98.3%,
+    #233b49 159.85%
+  );
+}
+
+.guide img {
+  width: 60%;
+  height: 60%;
+}
+
+.search {
+  width: 65%;
+  height: 48px;
+
+  border-radius: 16px;
+}

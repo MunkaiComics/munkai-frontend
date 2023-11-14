@@ -1,0 +1,135 @@
+.started {
+  margin-top: 7rem;
+}
+
+.started .started__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.started .started__container .started__inner {
+  display: block;
+}
+
+.started .started__container .started__inner h1 {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.started .started__container .started__inner .started__cards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.started .started__container .started__inner .started__cards .started__card {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.started
+  .started__container
+  .started__inner
+  .started__cards
+  .started__card
+  img {
+  height: 13.75rem;
+  width: 13.75rem;
+  object-fit: cover;
+  background-color: #e1f5fa;
+}
+
+.started
+  .started__container
+  .started__inner
+  .started__cards
+  .started__card
+  .started__card-explore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e1f5fa;
+}
+
+.started
+  .started__container
+  .started__inner
+  .started__cards
+  .started__card
+  .started__card-text {
+  white-space: nowrap;
+  background-color: white;
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 10px;
+}
+
+.started
+  .started__container
+  .started__inner
+  .started__cards
+  .started__card
+  .started__card-text
+  h6 {
+  font-size: 0.8rem;
+  font-family: "Roboto", sans-serif !important;
+}
+
+.dark-content
+  .started
+  .started__container
+  .started__inner
+  .started__cards
+  .started__card
+  .started__card-text
+  h6 {
+  font-size: 0.8rem;
+  font-family: "Roboto", sans-serif !important;
+}
+
+.dark-content
+  .started
+  .started__container
+  .started__inner
+  .started__cards
+  .started__card
+  .started__card-text {
+  white-space: nowrap;
+  background-color: #00002b;
+  color: white;
+}
+
+.eaptOe {
+  box-shadow: 0 0 1px 3px #4fa5d8 !important;
+  height: 5px !important;
+  width: 5px !important;
+  margin: 7px !important;
+}
+
+.lcUbOd {
+  background-color: #4fa5d8 !important;
+  box-shadow: 0 0 1px 3px #4fa5d8 !important;
+  height: 9px !important;
+  width: 9px !important;
+}
+
+@media screen and (max-width: 768px) {
+  .started .started__container .started__inner .started__cards {
+    display: block;
+  }
+
+  .started .started__container .started__inner .started__cards .started__card {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .started .started__container .started__inner .started__cards .started__card {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}

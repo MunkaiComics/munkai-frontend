@@ -1,0 +1,82 @@
+@import "styles/variables";
+
+.button {
+  height: 50px;
+  width: 200px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 20px;
+  line-height: $font-size--lg;
+  font-weight: $font-weight--bolder;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  &--solid {
+    background-color: $button-bg;
+    box-shadow: $button-shadow;
+  }
+
+  &--outline {
+    background-color: transparent;
+    border: 1px solid $button-bg;
+    box-shadow: none;
+    color: $button-bg;
+  }
+
+  &--ghost,
+  &--transparent {
+    background-color: transparent !important;
+    box-shadow: none !important;
+
+    &:disabled:hover {
+      background-color: transparent !important;
+    }
+  }
+
+  &--loading {
+    min-width: 180px;
+  }
+
+  &--icon {
+    height: 32px;
+    width: unset;
+  }
+
+  &__left-icon,
+  &__right-icon {
+    display: inline-flex;
+    position: absolute;
+
+    svg {
+      height: 16px;
+      width: 16px;
+    }
+  }
+
+  &__left-icon {
+    left: 16px;
+  }
+
+  &__right-icon {
+    right: 12px;
+  }
+
+  @media #{$media-mobile} {
+    height: 42px;
+    font-size: $font-size--base;
+  }
+}

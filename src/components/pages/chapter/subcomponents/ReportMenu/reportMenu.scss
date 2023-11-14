@@ -1,0 +1,93 @@
+@import "styles/variables";
+
+.dark-content {
+  .report-menu {
+    &__modal {
+      background-color: $back-btn-arrow-bg;
+      box-shadow: 0px 0px 70px #4fa5d8;
+    }
+  }
+}
+
+.report-menu {
+  &__button {
+    height: fit-content;
+
+    svg {
+      height: 16px;
+    }
+  }
+
+  &__item {
+    padding: 10px 0 !important;
+    font-weight: $font-weight--medium;
+
+    svg {
+      height: 20px;
+      width: 20px;
+      margin-right: 8px;
+    }
+  }
+
+  &__modal {
+    padding: 50px 70px;
+    border-radius: 24px;
+    background-color: $white;
+
+    h1 {
+      font-size: 36px;
+      font-weight: $font-weight--bold;
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 8px 16px;
+      margin-top: 16px;
+      border: none;
+      border-radius: 10px;
+      background-color: $grey;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    button {
+      width: unset;
+      padding: 0 24px;
+      margin: 20px auto 0 auto;
+      border-radius: 25px;
+    }
+  }
+
+  @media #{$media-mobile} {
+    &__button {
+      svg {
+        height: 12px;
+      }
+    }
+
+    &__item {
+      padding: 6px !important;
+      font-size: $font-size--xs !important;
+    }
+
+    &__modal {
+      padding: 24px 32px;
+
+      h1 {
+        font-size: $font-size--md;
+      }
+
+      p {
+        font-size: $font-size--xs;
+      }
+
+      textarea {
+        height: 100px;
+        font-size: $font-size--xs;
+      }
+    }
+  }
+}

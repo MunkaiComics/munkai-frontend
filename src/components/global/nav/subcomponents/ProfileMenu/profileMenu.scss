@@ -1,0 +1,144 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.MuiListItem-root,
+.MuiMenuItem-root {
+  padding: 0 !important;
+}
+
+.MuiList-padding,
+.MuiList-root,
+.MuiButtonBase-root,
+.MuiListItem-root,
+.MuiMenuItem-root:hover {
+  background-color: transparent !important;
+}
+
+.dark-content {
+  .profile-menu {
+    background-color: $back-btn-arrow-bg;
+
+    &__munkai {
+      .mbalance {
+        color: white;
+      }
+    }
+
+    &__binance {
+      .mbalance {
+        color: white;
+      }
+    }
+  }
+
+  .connect-wallet {
+    &:hover,
+    &:focus,
+    &:active {
+      color: $white;
+    }
+  }
+}
+
+.white-content {
+  .profile-menu {
+    background-color: $white;
+
+    &__item {
+      color: $back-btn-arrow-bg !important;
+    }
+  }
+}
+
+.profile-menu {
+  border-radius: $border-radius--xl;
+
+  &__root {
+    .MuiPaper-root {
+      border-radius: $border-radius--xl !important;
+      top: 60px !important;
+      padding: 0px !important;
+      right: 100px !important;
+      width: 200px !important;
+      background-color: $white !important;
+    }
+  }
+
+  & &__item {
+    @include menu-item();
+  }
+
+  &__texts {
+    font-weight: 700 !important;
+    font-size: 0.8rem !important;
+    margin-top: 6px !important;
+  }
+
+  &__funds {
+    border: none;
+    width: 100%;
+    padding: 0.2rem 0rem;
+    font-weight: 600 !important;
+    text-align: center;
+    font-size: 0.7rem;
+    border-radius: 10px;
+    color: white;
+    background-color: #4fa5d8;
+  }
+
+  &__company {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600 !important;
+    font-size: 0.7rem !important;
+    margin-top: 14px;
+  }
+
+  &__munkai {
+    display: flex;
+    align-items: center;
+    font-size: 0.7rem;
+    margin-top: 8px;
+
+    .munk {
+      height: 1.5rem;
+    }
+
+    .mbalance {
+      color: #00022b;
+      font-weight: 700;
+    }
+
+    .mvalue {
+      color: #bbbbbb;
+    }
+  }
+
+  &__binance {
+    display: flex;
+    align-items: center;
+    font-size: 0.7rem;
+    margin-top: 8px;
+
+    img {
+      height: 1.5rem;
+    }
+    .mbalance {
+      color: #00022b;
+      font-weight: 700;
+    }
+
+    .mvalue {
+      color: #bbbbbb;
+    }
+  }
+
+  @media #{$media-mobile} {
+    &__root {
+      .MuiPaper-root {
+        top: 60px !important;
+        right: 5px !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+@import "styles/mixins";
+
+.contact {
+  @include flex-center();
+
+  min-height: 100vh;
+  justify-content: center;
+}

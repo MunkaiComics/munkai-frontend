@@ -1,0 +1,33 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.modal {
+  @include flex-center();
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: $modal-overlay;
+  justify-content: center;
+  z-index: 999;
+
+  > div {
+    width: 40%;
+
+    @media #{$media-tablet} {
+      width: 55%;
+    }
+
+    @media #{$media-mobile} {
+      width: 65%;
+    }
+
+    @media #{$media-mobile--sm} {
+      width: 90%;
+    }
+  }
+}

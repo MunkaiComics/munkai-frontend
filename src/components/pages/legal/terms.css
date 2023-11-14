@@ -1,0 +1,35 @@
+.terms-and-conditions {
+  background: var(--white);
+  color: #000;
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  font-family: "Roboto", sans-serif;
+}
+
+.terms-and-conditions span {
+  font-weight: 900;
+}
+
+.terms-and-conditions p {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.gap {
+  margin-bottom: 30px;
+}
+
+.gap1 {
+  margin-bottom: 10px;
+}
+
+.gap2 {
+  margin-bottom: 15px;
+}
+
+@media (max-width: 450px) {
+  .terms-and-conditions {
+    padding: 20px;
+  }
+}

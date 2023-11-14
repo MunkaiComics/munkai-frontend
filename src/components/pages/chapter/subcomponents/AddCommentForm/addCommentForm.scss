@@ -1,0 +1,63 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.dark-content {
+  .add-comment {
+    &__input {
+      color: $text-light;
+    }
+  }
+}
+
+.add-comment {
+  @include flex(row);
+
+  &__form {
+    @include flex(column, flex-end);
+
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  &__input {
+    height: 40px;
+    width: inherit;
+    border: none;
+    border-bottom: 1px solid $button-bg;
+    background-color: transparent;
+    font-size: $font-size--base;
+    font-weight: $font-weight--medium;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__button {
+    height: 42px;
+    width: unset;
+    margin-top: 12px;
+    padding: 0 28px;
+    border-radius: 30px;
+    font-size: $font-size--base;
+  }
+
+  @media #{$media-mobile} {
+    &__form {
+      margin: 0;
+    }
+
+    &__input {
+      height: 32px;
+      font-size: $font-size--sm;
+    }
+
+    &__button {
+      height: 32px;
+      margin-top: 8px;
+      padding: 0 16px;
+      border-radius: 16px;
+      font-size: $font-size--sm;
+    }
+  }
+}

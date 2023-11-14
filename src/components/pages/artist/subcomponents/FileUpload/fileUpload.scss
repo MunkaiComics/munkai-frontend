@@ -1,0 +1,65 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.white-content .file-upload {
+  background-color: $grey;
+}
+
+.file-upload {
+  &,
+  &__details {
+    @include flex-center();
+
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &-container {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  height: 200px;
+  width: 260px;
+  border-radius: 25px;
+  background-color: $text-light;
+
+  input[type="file"] {
+    height: inherit;
+    width: inherit;
+
+    position: absolute;
+    border-radius: inherit;
+    opacity: 0;
+    cursor: pointer;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  &__details {
+    padding: 0 16px;
+    color: $text-dark;
+    font-weight: $font-weight--medium;
+  }
+
+  &__size-limit {
+    font-weight: $font-weight--bold;
+    margin-left: 16px;
+  }
+
+  @media #{$media-mobile} {
+    height: 120px;
+    width: 180px;
+
+    &-container {
+      margin: 0 auto;
+    }
+
+    &__details img {
+      height: 50px;
+      width: 50px;
+    }
+  }
+}

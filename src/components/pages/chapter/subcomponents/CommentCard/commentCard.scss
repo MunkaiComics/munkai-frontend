@@ -1,0 +1,62 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+.comment-card {
+  @include flex();
+
+  &__details {
+    margin-top: 16px;
+  }
+
+  &__header {
+    @include flex(row, center, space-between);
+
+    margin-bottom: 8px;
+
+    &__details {
+      @include flex-center();
+
+      h3 {
+        margin: 0 8px 0 0;
+        font-size: 20px;
+        font-weight: $font-weight--bold;
+        line-height: 20px;
+      }
+    }
+  }
+
+  &__button {
+    width: unset;
+    padding: 0;
+    color: $button-bg;
+    font-size: $font-size--base;
+  }
+
+  @media #{$media-mobile} {
+    margin-bottom: 16px;
+
+    &__details {
+      margin-top: 7px;
+    }
+
+    &__header {
+      @include flex(row, center, space-between);
+
+      margin-bottom: 8px;
+
+      &__details {
+        h3 {
+          font-size: $font-size--base;
+          line-height: $font-size--base;
+        }
+      }
+    }
+
+    &__button {
+      height: fit-content;
+      margin-top: 8px;
+      font-size: $font-size--xs;
+      line-height: $font-size--xs;
+    }
+  }
+}

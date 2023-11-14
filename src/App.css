@@ -1,0 +1,152 @@
+:root {
+  --bg-light: #f1f1f1;
+  --bg-dark: #00022b;
+  --box-shadow: 0px 4px 30px 1px #4fa5d8;
+  --border-radius: 17px;
+  --white: #fff;
+  --light-blue: #daeaf7;
+  --dark-blue: #233b49;
+  --blue: #039be5;
+  --light-grey: #f0eded;
+  --text-dark: #00022b;
+  --hero-dark: #1f2034;
+}
+
+.white-content {
+  background: var(--bg-light);
+  color: var(--dark-blue);
+  transition: background-color 0.25s ease-in-out;
+}
+
+.dark-content {
+  background: #181a37;
+  background-repeat: no-repeat;
+  color: #f4f4f4;
+  transition: background-color 0.25s ease-in-out;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+html,
+body {
+  min-height: 100vh;
+}
+
+html {
+  overflow-x: hidden;
+  scroll-padding-top: 5rem;
+  scroll-behavior: smooth;
+  font-size: 18px;
+}
+
+html::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: #c5e0fa;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--light-grey);
+  border-radius: 30px;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+section {
+  padding-top: 5rem;
+}
+
+p {
+  margin-bottom: 0px;
+}
+
+h5 {
+  font-size: 1.2rem;
+  font-family: "Baloo Da 2", cursive;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.h1 {
+  font-size: 7rem;
+  font-family: "Baloo Da 2", cursive;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.heading {
+  font-size: 45px;
+  font-family: "Baloo Da 2", cursive;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.raleway {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+}
+
+.iceland {
+  font-family: "Iceland", cursive;
+  font-weight: 600;
+}
+
+.baloo {
+  font-family: "Baloo Da 2", cursive;
+}
+
+.baloo2 {
+  font-family: "Baloo Da 2", cursive;
+  font-weight: 700;
+}
+
+.br {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+.bs {
+  box-shadow: var(--box-shadow);
+}
+
+.restricted-width {
+  max-width: 70rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+@media (max-width: 991px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 0;
+  }
+
+  body {
+    padding-bottom: 1rem;
+  }
+  section {
+    padding-top: 4rem;
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 16px;
+  }
+}

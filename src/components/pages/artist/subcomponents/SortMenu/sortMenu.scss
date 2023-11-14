@@ -1,0 +1,32 @@
+@import "styles/variables";
+
+.sort-menu {
+  span svg {
+    height: 36px;
+    width: 36px;
+    margin-right: 6px;
+  }
+
+  &__item__icon--dark svg {
+    height: 20px !important;
+    width: 20px !important;
+    margin: 0 0 2px 8px;
+  }
+
+  @media #{$media-mobile} {
+    span svg {
+      height: 28px;
+      width: 28px;
+    }
+
+    &__item__icon--dark svg {
+      height: 16px !important;
+      width: 16px !important;
+      margin-left: 4px;
+    }
+
+    .MuiInputBase-input {
+      font-size: $font-size--sm;
+    }
+  }
+}

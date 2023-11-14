@@ -1,0 +1,49 @@
+@import "styles/variables";
+
+.white-content {
+  .slick-next,
+  .slick-prev {
+    &,
+    &:hover,
+    &:focus {
+      color: $text-dark;
+      background: $white;
+    }
+  }
+}
+
+.dark-content .arrivals {
+  background: #1f2034;
+}
+
+.arrivals {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 0;
+
+  .cover-card {
+    .bs {
+      box-shadow: none;
+
+      .button {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &__slider {
+    padding: 0 2rem;
+
+    .alice-carousel {
+      overflow-x: hidden;
+      max-width: 93.8%;
+      margin: 0 auto;
+    }
+  }
+
+  @media #{$media-mobile} {
+    .heading {
+      font-size: $font-size--md;
+    }
+  }
+}

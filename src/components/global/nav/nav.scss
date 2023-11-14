@@ -1,0 +1,154 @@
+@import "styles/variables";
+
+:root {
+  --logo-height: 60px;
+  --navbar-height: 4rem;
+}
+
+@media #{$media-mobile} {
+  :root {
+    --navbar-height: 64px;
+    --navbar-vertical-padding: 0.5rem;
+    --navbar-horizontal-padding: 1rem;
+  }
+}
+
+.navbar {
+  position: fixed;
+  height: var(--navbar-height);
+  width: 100vw;
+  left: 0;
+
+  &--outer {
+    height: $navbar-height;
+  }
+  &__logo,
+  &__logo__dark {
+    height: 60px;
+    width: 150px;
+    margin-top: 5px;
+    object-fit: contain;
+  }
+
+  .links {
+    img {
+      width: 30px;
+      height: 30px;
+      margin-left: 15px;
+      cursor: pointer;
+    }
+
+    .picture {
+      background-color: white !important;
+      border: 3px solid #bbbbbb;
+    }
+  }
+
+  @media #{$media-mobile} {
+    :root {
+      --navbar-height: 57px;
+      --navbar-vertical-padding: 1rem;
+      --navbar-horizontal-padding: 1rem;
+    }
+
+    &__logo,
+    &__logo__dark {
+      height: 25px;
+      width: 80px;
+    }
+
+    .links {
+      a {
+        margin: 0;
+        font-size: $font-size--sm;
+      }
+
+      button {
+        padding-right: 1rem;
+        padding-left: 1rem;
+      }
+
+      img {
+        width: 24px;
+        height: 24px;
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+.navbar__mobile {
+  position: fixed;
+  z-index: 999;
+  height: auto;
+  width: 100%;
+  background-color: white;
+  overflow: hidden;
+  left: 0;
+  padding: 8px 16px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.navbar__mobile .navImage {
+  height: 10px;
+}
+
+.navbar__mobile .inner-list {
+  padding: 10px 0px;
+  border-bottom: 0.5px solid #dddddd;
+  text-align: center;
+  color: black !important;
+  text-decoration: none;
+  display: block;
+}
+
+.navbar__mobile .logo {
+  height: 16px;
+}
+
+.navbar__mobile-explore {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dark-content {
+  .navbar {
+    .links {
+      .picture {
+        background-color: white !important;
+        border: 3px solid #bbbbbb;
+      }
+    }
+  }
+
+  .navbar__mobile {
+    color: black;
+    overflow-x: hidden;
+    height: auto;
+    width: 100%;
+  }
+
+  .navbar__mobile .navImage {
+    height: 10px;
+  }
+
+  .navbar__mobile .inner-list {
+    padding: 10px 0px;
+    border-bottom: 0.5px solid #dddddd;
+    text-align: center;
+  }
+
+  .navbar__mobile .logo {
+    height: 16px;
+  }
+
+  .navbar__mobile-explore {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    width: 100%;
+  }
+}

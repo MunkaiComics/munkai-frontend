@@ -1,0 +1,13 @@
+@import "styles/variables";
+
+.main-content {
+  padding: 0 4rem;
+
+  .restricted-width & {
+    padding: 0;
+  }
+
+  h1 {
+    font-weight: $font-weight--bold;
+  }
+}
