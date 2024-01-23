@@ -26,7 +26,7 @@ function Mcomics() {
   const fetchComics = _.debounce(() => {
     setComicsLoading(true);
     axios
-      .get(`${API_URL}/comic/find`, {
+      .get(`${API_URL}/publication/find`, {
         params: { author: username },
       })
       .then(res => {
