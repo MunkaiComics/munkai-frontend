@@ -17,7 +17,7 @@ function Arrivals() {
 
     axios
       .get(`${API_URL}/comic/chapters/find`, { params: { type: "new" } })
-      .then((res) => {
+      .then(res => {
         setChapters(res.data.data);
       })
 
@@ -29,7 +29,7 @@ function Arrivals() {
     if (!chaptersLoading && !chapters) {
       fetchChapters();
     }
-  }, [chaptersLoading, chapters, fetchChapters]);
+  }, []);
 
   return (
     <div>

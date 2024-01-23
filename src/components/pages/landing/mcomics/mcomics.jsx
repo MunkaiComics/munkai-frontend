@@ -29,14 +29,14 @@ function Mcomics() {
       .get(`${API_URL}/comic/find`, {
         params: { author: username },
       })
-      .then((res) => {
+      .then(res => {
         setComics(res.data.data);
       })
-      .catch((err) => {
+      .catch(err => {
         console.error(err);
       })
       .finally(() => setComicsLoading(false));
-  });
+  }, 500);
 
   useEffect(() => {
     if (!comicsLoading && comics.length === 0) {
@@ -47,7 +47,7 @@ function Mcomics() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [comics, fetchComics, comicsLoading]);
+  }, [comics]);
 
   return (
     <div>
@@ -69,14 +69,14 @@ function Mcomics() {
         {viewportWidth < 768 ? (
           <div className="comic__card">
             <Carousel itemsToShow={1} showArrows={false}>
-              {comics.slice(0, 4).map((comic) => (
+              {comics.slice(0, 4).map(comic => (
                 <ComicsCard key={comic.id} {...comic} />
               ))}
             </Carousel>
           </div>
         ) : (
           <div className="comic__card">
-            {comics.slice(0, 4).map((comic) => (
+            {comics.slice(0, 4).map(comic => (
               <ComicsCard key={comic.id} {...comic} />
             ))}
           </div>

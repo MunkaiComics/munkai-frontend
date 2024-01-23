@@ -51,7 +51,7 @@ function Nav() {
     await connectWallet();
   }, [connectWallet]);
 
-  const handleClick = (event) => {
+  const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -87,7 +87,7 @@ function Nav() {
                 <img
                   src={theme === "dark" ? MenuDark : MenuBurger}
                   alt="Menu"
-                  onClick={() => setShowMobileNav((prev) => !prev)}
+                  onClick={() => setShowMobileNav(prev => !prev)}
                 />
               ) : theme === "dark" ? (
                 <Link to="/">
@@ -108,10 +108,8 @@ function Nav() {
                   <a
                     href="/explore"
                     className="iceland"
-                    onClick={(event) => setAnchorExplore(event.currentTarget)}
-                    onMouseOver={(event) =>
-                      setAnchorExplore(event.currentTarget)
-                    }
+                    onClick={event => setAnchorExplore(event.currentTarget)}
+                    onMouseOver={event => setAnchorExplore(event.currentTarget)}
                   >
                     <style jsx>{`
                       a {
@@ -233,7 +231,7 @@ function Nav() {
           </div>
           {showMobileMenu &&
             viewPort < 768 &&
-            menuItems.map((item) => (
+            menuItems.map(item => (
               <Link
                 to={item.page}
                 className="inner-list"
