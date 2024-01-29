@@ -39,10 +39,13 @@ function CreateComic() {
     try {
       const signer = provider.getSigner();
       const signature = await signer.signMessage(CREATE_COMIC_MESSAGE);
-      await axios.post(`${API_URL}/comic/add-comic`, data, {
+      await axios.post(`${API_URL}/publication/add-publication`, data, {
         auth: {
           username: user.address,
           password: signature,
+        },
+        headers: {
+          "Content-Type": "multipart/form-data",
         },
       });
       history.goBack();
@@ -54,9 +57,9 @@ function CreateComic() {
     }
   };
 
-  const createURL = (imageFile) => {
+  const createURL = imageFile => {
     let reader = new FileReader();
-    reader.onload = (e) => setImageUrl(e.target.result);
+    reader.onload = e => setImageUrl(e.target.result);
     reader.readAsDataURL(imageFile);
   };
 
@@ -70,61 +73,62 @@ function CreateComic() {
 
   return (
     <Layout>
-      <div className='create-comic'>
+      <div className="create-comic">
         <h1>CREATE COMIC</h1>
 
-        <div className='create-comic__content'>
+        <div className="create-comic__content">
           <form
-            className='create-comic__form'
-            onSubmit={(e) => {
+            className="create-comic__form"
+            onSubmit={e => {
               e.preventDefault();
               if (!loading) submitForm();
-            }}>
+            }}
+          >
             <FileUpload
-              accept='image/x-png,image/jpeg'
+              accept="image/x-png,image/jpeg"
               updateSelected={setImageFile}
-              placeholder='Upload Cover'
+              placeholder="Upload Cover"
             />
             <input
-              type='text'
-              placeholder='Comic Title'
+              type="text"
+              placeholder="Comic Title"
               value={title}
               required
               disabled={loading}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={e => setTitle(e.target.value)}
             />
             <textarea
-              placeholder='Comic Summary'
+              placeholder="Comic Summary"
               value={summary}
               required
               maxLength={300}
               disabled={loading}
-              onChange={(e) => setSummary(e.target.value)}
+              onChange={e => setSummary(e.target.value)}
             />
             <Button isLoading={loading}>Create Comic</Button>
           </form>
 
-          <div className='create-comic__preview'>
-            <h2 className='create-comic__preview-header'>Preview</h2>
+          <div className="create-comic__preview">
+            <h2 className="create-comic__preview-header">Preview</h2>
 
-            <div className='create-comic__preview-panel'>
-              <div className='create-comic__preview-panel__image'>
+            <div className="create-comic__preview-panel">
+              <div className="create-comic__preview-panel__image">
                 {imageUrl ? (
-                  <img src={imageUrl} alt='Comic preview illustration' />
+                  <img src={imageUrl} alt="Comic preview illustration" />
                 ) : null}
               </div>
-              <div className='create-comic__preview-panel__info'>
+              <div className="create-comic__preview-panel__info">
                 {title ? (
-                  <p className='create-comic__preview-panel__title'>{title}</p>
+                  <p className="create-comic__preview-panel__title">{title}</p>
                 ) : null}
                 {title ? (
-                  <div className='create-comic__preview-panel__stats'>
+                  <div className="create-comic__preview-panel__stats">
                     <p>0 CHAPTERS</p>
                     <div>
                       <img
                         src={Heart}
                         style={{ height: 24, width: 24 }}
-                        alt='heart'
+                        alt="heart"
                       />
                     </div>
                   </div>
