@@ -31,6 +31,8 @@ function Arrivals() {
     }
   }, []);
 
+  console.log(chapters);
+
   return (
     <div>
       <section className="restricted-width">
@@ -43,7 +45,7 @@ function Arrivals() {
               disableDotsControls
               className="card-list-section__slider"
             >
-              {chapters &&
+              {/* {chapters &&
                 chapters.map((data, index) => (
                   <div style={{ width: 270 }}>
                     <Card
@@ -56,7 +58,7 @@ function Arrivals() {
                       {...data}
                     />
                   </div>
-                ))}
+                ))} */}
             </AliceCarousel>
           </div>
         </div>
