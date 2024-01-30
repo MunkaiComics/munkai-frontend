@@ -113,7 +113,7 @@ const ArtistProfile = () => {
           <h1 className="profile__details__username">{user.username}</h1>
           <div className="profile__details__stats">
             <div className="profile__details__stats__section">
-              <p>{profile.numOfComics} COMICS</p>
+              <p>{profile.numOfComics} PUBLICATIONS</p>
             </div>
             <div className="profile__details__stats__section">
               <p>{`${profile.numOfChapters} CHAPTERS`}</p>

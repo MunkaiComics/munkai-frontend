@@ -29,10 +29,10 @@ function Mcomics() {
       .get(`${API_URL}/publication/find`, {
         params: { author: username },
       })
-      .then(res => {
+      .then((res) => {
         setComics(res.data.data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
       })
       .finally(() => setComicsLoading(false));
@@ -53,7 +53,7 @@ function Mcomics() {
     <div>
       <section className="munkai-comics restricted-width">
         <div className="munkai__comics__heading">
-          <h1>MUNKAI COMICS</h1>
+          <h1>MUNKAI ART</h1>
 
           <div
             className="munkai-comics__button"
@@ -69,14 +69,14 @@ function Mcomics() {
         {viewportWidth < 768 ? (
           <div className="comic__card">
             <Carousel itemsToShow={1} showArrows={false}>
-              {comics.slice(0, 4).map(comic => (
+              {comics.slice(0, 4).map((comic) => (
                 <ComicsCard key={comic.id} {...comic} />
               ))}
             </Carousel>
           </div>
         ) : (
           <div className="comic__card">
-            {comics.slice(0, 4).map(comic => (
+            {comics.slice(0, 4).map((comic) => (
               <ComicsCard key={comic.id} {...comic} />
             ))}
           </div>
