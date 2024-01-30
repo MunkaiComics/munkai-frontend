@@ -59,9 +59,9 @@ function CreateComic() {
     }
   };
 
-  const createURL = imageFile => {
+  const createURL = (imageFile) => {
     let reader = new FileReader();
-    reader.onload = e => setImageUrl(e.target.result);
+    reader.onload = (e) => setImageUrl(e.target.result);
     reader.readAsDataURL(imageFile);
   };
 
@@ -76,12 +76,12 @@ function CreateComic() {
   return (
     <Layout>
       <div className="create-comic">
-        <h1>CREATE COMIC</h1>
+        <h1>PUBLISH AN ART</h1>
 
         <div className="create-comic__content">
           <form
             className="create-comic__form"
-            onSubmit={e => {
+            onSubmit={(e) => {
               e.preventDefault();
               if (!loading) submitForm();
             }}
@@ -97,14 +97,13 @@ function CreateComic() {
               value={title}
               required
               disabled={loading}
-              onChange={e => setTitle(e.target.value)}
+              onChange={(e) => setTitle(e.target.value)}
             />
             <select
               style={{ padding: "16px" }}
-              onChange={e => setType(e.target.value)}
+              onChange={(e) => setType(e.target.value)}
             >
               <option value="comic">Comic</option>
-              <option value="article">Article</option>
               <option value="book">Book</option>
               <option value="poem">Poem</option>
             </select>
@@ -114,9 +113,9 @@ function CreateComic() {
               required
               maxLength={300}
               disabled={loading}
-              onChange={e => setSummary(e.target.value)}
+              onChange={(e) => setSummary(e.target.value)}
             />
-            <Button isLoading={loading}>Create Comic</Button>
+            <Button isLoading={loading}>Create</Button>
           </form>
 
           <div className="create-comic__preview">
