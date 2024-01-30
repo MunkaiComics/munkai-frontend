@@ -18,6 +18,7 @@ function CreateComic() {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [loading, setLoading] = useState(false);
+  const [type, setType] = useState("");
 
   const { provider } = useContext(Web3Context);
   const { user } = useContext(AccountContext);
@@ -27,6 +28,7 @@ function CreateComic() {
   const getRequestData = () => {
     const form = new FormData();
     form.set("title", title);
+    form.set("type", type);
     form.set("description", summary);
     form.set("cover", imageFile);
 
@@ -97,6 +99,15 @@ function CreateComic() {
               disabled={loading}
               onChange={e => setTitle(e.target.value)}
             />
+            <select
+              style={{ padding: "16px" }}
+              onChange={e => setType(e.target.value)}
+            >
+              <option value="comic">Comic</option>
+              <option value="article">Article</option>
+              <option value="book">Book</option>
+              <option value="poem">Poem</option>
+            </select>
             <textarea
               placeholder="Comic Summary"
               value={summary}

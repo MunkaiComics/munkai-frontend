@@ -58,7 +58,7 @@ const RouteNotFoundBoundary = withRouter(
 );
 
 function App() {
-  const artistCondition = (user) => user.role === "artist";
+  const artistCondition = user => user.role === "artist";
   return (
     <Router>
       <Web3ContextProvider>
@@ -75,42 +75,44 @@ function App() {
               }}
             />
             <Switch>
-              <Route path='/' exact component={Landing} />
-              <Route exact path='/explore' component={Explore} />
-              <Route exact path='/create-profile' component={Profile} />
-              <Route exact path='/terms' component={TermsAndConditionsPage} />
-              <ProtectedRoute exact path='/become-creator' component={Artist} />
-              <ProtectedRoute exact path='/contact' component={Contact} />
+              <Route path="/" exact component={Landing} />
+              <Route exact path="/explore" component={Explore} />
+              <Route exact path="/create-profile" component={Profile} />
+              <Route exact path="/terms" component={TermsAndConditionsPage} />
+              <ProtectedRoute exact path="/become-creator" component={Artist} />
+              <ProtectedRoute exact path="/contact" component={Contact} />
               <ProtectedRoute
                 exact
-                path='/creator/:username'
-                cond={(user) => !!user}
+                path="/creator/:username"
+                cond={user => !!user}
                 component={ArtistProfile}
-                render={(props) => <ArtistProfile key={props.location.pathname} {...props} />}
+                render={props => (
+                  <ArtistProfile key={props.location.pathname} {...props} />
+                )}
               />
-              <ProtectedRoute exact path='/chapters/:id' component={Details} />
+              <ProtectedRoute exact path="/chapters/:id" component={Details} />
               <ProtectedRoute
                 exact
-                path='/chapters/:id/read'
+                path="/chapters/:id/read"
                 component={ChapterPage}
               />
               <ProtectedRoute
                 exact
-                path='/create-comic'
+                path="/create-comic"
                 cond={artistCondition}
                 component={CreateComic}
               />
               <ProtectedRoute
                 exact
-                path='/upload-chapter'
+                path="/upload-chapter"
                 cond={artistCondition}
                 component={UploadChapter}
               />
-              <ProtectedRoute exact path='/view-comic' component={ComicPage} />
+              <ProtectedRoute exact path="/view-comic" component={ComicPage} />
               <ProtectedRoute
                 exact
-                path='/user/:username'
-                cond={(user) => !!user}
+                path="/user/:username"
+                cond={user => !!user}
                 component={User}
               />
 
