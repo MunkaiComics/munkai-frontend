@@ -12,6 +12,7 @@
 
 @mixin form-input {
   input,
+  select,
   textarea {
     width: 100%;
     margin-bottom: 24px;
