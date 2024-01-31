@@ -46,10 +46,10 @@ const ArtistProfile = () => {
     if (username) {
       axios
         .get(`${API_URL}/artist/`, { params: { username } })
-        .then((res) => {
+        .then(res => {
           setArtist({ ...artist, ...res.data.data.user });
         })
-        .catch((err) => {
+        .catch(err => {
           console.error(err.statusCode);
           setIsFound(false);
         });
@@ -57,16 +57,16 @@ const ArtistProfile = () => {
   }, [username, artist]);
   const user = artist;
 
-  const fetchComics = _.debounce((user) => {
+  const fetchComics = _.debounce(user => {
     setComicsLoading(true);
     axios
       .get(`${API_URL}/comic/find`, {
         params: { author: user.username },
       })
-      .then((res) => {
+      .then(res => {
         setComics(res.data.data);
       })
-      .catch((err) => {
+      .catch(err => {
         console.error(err);
       })
       .finally(() => setComicsLoading(false));
@@ -76,14 +76,14 @@ const ArtistProfile = () => {
     if (!comicsLoading && comics.length === 0) {
       fetchComics(user);
     }
-  }, [user, comicsLoading, comics]);
+  }, [user]);
 
   const profile = {
     numOfComics: comics.length,
     numOfChapters: user.artistProfile?.chapterCount ?? 0,
   };
 
-  const handleSelectedChange = (index) => {
+  const handleSelectedChange = index => {
     setSelectedSection(sections[index]);
   };
 

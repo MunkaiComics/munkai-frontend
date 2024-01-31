@@ -31,6 +31,8 @@ function CreateComic() {
     form.set("type", type);
     form.set("description", summary);
     form.set("cover", imageFile);
+    form.set("id", user.id);
+    form.set("address", user.address);
 
     return form;
   };
