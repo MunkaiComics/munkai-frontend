@@ -7,7 +7,6 @@ import {
   BUSD_TOKEN_CONTRACT_ADDRESS,
   CHAPTER_MINT_CONTRACT_ADDRESS,
   INFURA_ID,
-  MUNK_TOKEN_CONTRACT_ADDRESS,
 } from "config/constants";
 import toast from "react-hot-toast";
 import MunkaiChapters from "assets/abi/MunkaiChapters.json";
@@ -65,13 +64,6 @@ const Web3ContextProvider = ({ children }) => {
     }
   });
 
-  const munkTokenContract =
-    provider &&
-    new ethers.Contract(
-      MUNK_TOKEN_CONTRACT_ADDRESS,
-      ERC20Token,
-      provider.getSigner()
-    );
   const bUSDTokenContract =
     provider &&
     new ethers.Contract(
@@ -96,8 +88,8 @@ const Web3ContextProvider = ({ children }) => {
         loading,
         chaptersContract,
         bUSDTokenContract,
-        munkTokenContract,
-      }}>
+      }}
+    >
       {children}
     </Web3Context.Provider>
   );
