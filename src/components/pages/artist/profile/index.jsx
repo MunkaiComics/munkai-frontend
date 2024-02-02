@@ -54,13 +54,13 @@ const ArtistProfile = () => {
           setIsFound(false);
         });
     }
-  }, [username, artist]);
+  }, [username]);
   const user = artist;
 
   const fetchComics = _.debounce(user => {
     setComicsLoading(true);
     axios
-      .get(`${API_URL}/comic/find`, {
+      .get(`${API_URL}/publication/find`, {
         params: { author: user.username },
       })
       .then(res => {
@@ -143,14 +143,14 @@ const ArtistProfile = () => {
             header="COMICS"
             comics={comics}
             headerButton={
-              isNotCurrentUser ? null : (
+              !isNotCurrentUser ? (
                 <Button
                   onClick={() => history.push("/create-comic")}
                   className="user__artist-button"
                 >
                   Create
                 </Button>
-              )
+              ) : null
             }
           />
           <CardListSection

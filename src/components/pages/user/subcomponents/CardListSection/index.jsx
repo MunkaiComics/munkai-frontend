@@ -33,10 +33,10 @@ function CardListSection({ header, comics, headerButton }) {
 
   return (
     <div className="card-list-section">
-      {/* <div className='card-list-section__header'>
-        <h2 className='card-list-section__title'>{header}</h2>
+      <div className="card-list-section__header">
+        <h2 className="card-list-section__title">{header}</h2>
         {headerButton || null}
-      </div> */}
+      </div>
 
       {(!comics || comics.length === 0) && <div>Nothing here yet</div>}
 

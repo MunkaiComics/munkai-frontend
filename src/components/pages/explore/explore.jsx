@@ -20,14 +20,14 @@ function Explore() {
 
   const fetchChapters = useMemo(
     () =>
-      _.throttle((filter) => {
+      _.throttle(filter => {
         setChaptersLoading(true);
 
         axios
-          .get(`${API_URL}/comic/chapters/find`, {
-            params: { type: filter, q: search },
+          .get(`${API_URL}/publication/find`, {
+            params: { author: search, type: filter },
           })
-          .then((res) => {
+          .then(res => {
             setChapters(res.data.data);
           })
 
@@ -46,48 +46,48 @@ function Explore() {
 
   return (
     <div>
-    <div className="restricted-width">
-      <Nav />
-      <div>
-        <BackButton />
+      <div className="restricted-width">
+        <Nav />
+        <div>
+          <BackButton />
 
-        <div className="d-flex justify-content-between explore">
-          <h1 className="heading text-start">EXPLORE COMICS</h1>
-          <div className="explore__filters">
-            <div className="explore__search-input-container">
-              <SearchIcon />
-              <input
-                placeholder="Search creators, titles & genres"
-                className="search explore__search-input"
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </div>
-            <div className="form-group col-auto explore__filter-menu">
-              <FilterMenu filter={filter} updateFilter={setFilter} />
+          <div className="d-flex justify-content-between explore">
+            <h1 className="heading text-start">EXPLORE PUBLICATIONS</h1>
+            <div className="explore__filters">
+              <div className="explore__search-input-container">
+                <SearchIcon />
+                <input
+                  placeholder="Search creators, titles & genres"
+                  className="search explore__search-input"
+                  onChange={e => setSearch(e.target.value)}
+                />
+              </div>
+              <div className="form-group col-auto explore__filter-menu">
+                <FilterMenu filter={filter} updateFilter={setFilter} />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="card__list__container">
-          <div className="card-list card-list--explore">
-            {chapters?.map((data, index) => (
-              <Card
-                key={data.id}
-                img={getFileUrl(data.comic.cover)}
-                title={data.comic.title}
-                chapter={`Chapter ${data.number}`}
-                amount={data.views ?? 0}
-                username={data.comic.author?.username}
-                {...data}
-              />
-            ))}
-            {chapters?.length < 5 &&
-              new Array(5 - (chapters?.length ?? 0))
-                .fill(0)
-                .map((_, i) => <div className="explore-space-fill" />)}
+          <div className="card__list__container">
+            <div className="card-list card-list--explore">
+              {chapters?.map((data, index) => (
+                <Card
+                  key={data.id}
+                  img={getFileUrl(data.comic.cover)}
+                  title={data.comic.title}
+                  chapter={`Chapter ${data.number}`}
+                  amount={data.views ?? 0}
+                  username={data.comic.author?.username}
+                  {...data}
+                />
+              ))}
+              {chapters?.length < 5 &&
+                new Array(5 - (chapters?.length ?? 0))
+                  .fill(0)
+                  .map((_, i) => <div className="explore-space-fill" />)}
+            </div>
           </div>
         </div>
       </div>
-    </div>
       <Footer />
     </div>
   );

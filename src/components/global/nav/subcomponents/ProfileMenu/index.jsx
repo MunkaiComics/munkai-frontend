@@ -16,7 +16,7 @@ function ProfileMenu({ closeMenu }) {
 
   const { theme } = useContext(ThemeContext);
   const { setUser, user } = useContext(AccountContext);
-  const { address } = user ?? {};
+  const { address, username } = user ?? {};
 
   const { connectWallet, disconnectWallet } = useContext(Web3Context);
 
@@ -41,37 +41,37 @@ function ProfileMenu({ closeMenu }) {
   const connectedWalletItems = [
     <MenuItem key="profile-menu-company">
       <div className="profile-menu__company">
-        <p>Munkaicomics</p>
+        <p>{username}</p>
         <p style={{ color: "#47a5d8" }}>
           {address.slice(0, 6)}...{address.slice(39)}
         </p>
       </div>
     </MenuItem>,
-    <MenuItem key="profile-menu__munkai">
-      <div className="profile-menu__munkai">
-        <img className="munk" src={MLogo} alt="M" />
-        <div>
-          <p className="mbalance">Balance</p>
-          <p className="mvalue">302907</p>
-        </div>
-      </div>
-    </MenuItem>,
-    <MenuItem key="profile-menu__binance">
-      <div className="profile-menu__binance">
-        <img src={Binance} alt="B" />
-        <div style={{ marginLeft: "5px" }}>
-          <p className="mbalance">Balance</p>
-          <p className="mvalue">302907</p>
-        </div>
-      </div>
-    </MenuItem>,
-    <MenuItem
-      key="profile_menu_item"
-      onClick={openProfile}
-      className="profile-menu__item"
-    >
-      <button className="profile-menu__funds">Add Funds</button>
-    </MenuItem>,
+    // <MenuItem key="profile-menu__munkai">
+    //   <div className="profile-menu__munkai">
+    //     <img className="munk" src={MLogo} alt="M" />
+    //     <div>
+    //       <p className="mbalance">Balance</p>
+    //       <p className="mvalue">302907</p>
+    //     </div>
+    //   </div>
+    // </MenuItem>,
+    // <MenuItem key="profile-menu__binance">
+    //   <div className="profile-menu__binance">
+    //     <img src={Binance} alt="B" />
+    //     <div style={{ marginLeft: "5px" }}>
+    //       <p className="mbalance">Balance</p>
+    //       <p className="mvalue">302907</p>
+    //     </div>
+    //   </div>
+    // </MenuItem>,
+    // <MenuItem
+    //   key="profile_menu_item"
+    //   onClick={openProfile}
+    //   className="profile-menu__item"
+    // >
+    //   <button className="profile-menu__funds">Add Funds</button>
+    // </MenuItem>,
     <MenuItem
       key="profile-menu__text1"
       className="profile-menu__texts"

@@ -108,8 +108,8 @@ function Nav() {
                   <a
                     href="/explore"
                     className="iceland"
-                    onClick={event => setAnchorExplore(event.currentTarget)}
-                    onMouseOver={event => setAnchorExplore(event.currentTarget)}
+                    // onClick={event => setAnchorExplore(event.currentTarget)}
+                    // onMouseOver={event => setAnchorExplore(event.currentTarget)}
                   >
                     <style jsx>{`
                       a {
