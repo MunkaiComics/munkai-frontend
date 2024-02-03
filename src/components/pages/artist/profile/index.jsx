@@ -25,10 +25,15 @@ const ArtistProfile = () => {
   const history = useHistory();
   const { username } = useParams();
   const [comics, setComics] = useState([]);
-  const sections = ["Comics", "Books", "Poems", "Articles"];
+  const sections = [
+    { label: "Comics", value: "comic" },
+    { label: "Books", value: "book" },
+    { label: "Poems", value: "poems" },
+    { label: "Articles", value: "articles" },
+  ];
   const [selectedSectionName, setSelectedSectionName] = useState("Owned");
   const creatorOptions = ["Owned", "Collections", "Favorites"];
-  const [selectedSection, setSelectedSection] = useState(sections[0]);
+  const [selectedSection, setSelectedSection] = useState(sections[0].value);
   const [isFound, setIsFound] = useState(!!username);
   const [comicsLoading, setComicsLoading] = useState(false);
   let { user: contextUser } = useContext(AccountContext);
@@ -45,7 +50,9 @@ const ArtistProfile = () => {
   useEffect(() => {
     if (username) {
       axios
-        .get(`${API_URL}/artist/`, { params: { username } })
+        .get(`${API_URL}/artist/`, {
+          params: { username },
+        })
         .then(res => {
           setArtist({ ...artist, ...res.data.data.user });
         })
@@ -54,14 +61,14 @@ const ArtistProfile = () => {
           setIsFound(false);
         });
     }
-  }, [username, artist]);
+  }, [username]);
   const user = artist;
 
   const fetchComics = _.debounce(user => {
     setComicsLoading(true);
     axios
-      .get(`${API_URL}/comic/find`, {
-        params: { author: user.username },
+      .get(`${API_URL}/publication/find`, {
+        params: { author: user.username, type: selectedSection },
       })
       .then(res => {
         setComics(res.data.data);
@@ -76,7 +83,7 @@ const ArtistProfile = () => {
     if (!comicsLoading && comics.length === 0) {
       fetchComics(user);
     }
-  }, [user]);
+  }, [user, selectedSection]);
 
   const profile = {
     numOfComics: comics.length,
@@ -84,7 +91,7 @@ const ArtistProfile = () => {
   };
 
   const handleSelectedChange = index => {
-    setSelectedSection(sections[index]);
+    setSelectedSection(sections[index].value);
   };
 
   return (
@@ -127,6 +134,7 @@ const ArtistProfile = () => {
             {sections.map((section, index) => (
               <ProfileSection
                 section={section}
+                key={section.value}
                 selected={selectedSection}
                 handleSelected={() => handleSelectedChange(index)}
               />
@@ -143,14 +151,14 @@ const ArtistProfile = () => {
             header="COMICS"
             comics={comics}
             headerButton={
-              isNotCurrentUser ? null : (
+              !isNotCurrentUser ? (
                 <Button
                   onClick={() => history.push("/create-comic")}
                   className="user__artist-button"
                 >
                   Create
                 </Button>
-              )
+              ) : null
             }
           />
           <CardListSection

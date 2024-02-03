@@ -10,7 +10,7 @@ const ProfileSection = ({ section, selected, handleSelected }) => {
       className="section__button"
       style={{
         backgroundColor:
-          selected === section
+          selected === section.value
             ? theme === "dark"
               ? "#4fa5d8"
               : "#4fa5d8"
@@ -18,7 +18,7 @@ const ProfileSection = ({ section, selected, handleSelected }) => {
             ? "#424355"
             : "#F0EDED",
         color:
-          selected === section
+          selected === section.value
             ? theme === "dark"
               ? "#F0EDED"
               : "#F0EDED"
@@ -28,7 +28,7 @@ const ProfileSection = ({ section, selected, handleSelected }) => {
       }}
       onClick={handleSelected}
     >
-      {section}
+      {section.label}
     </button>
   );
 };

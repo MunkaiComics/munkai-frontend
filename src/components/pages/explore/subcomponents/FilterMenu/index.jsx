@@ -25,7 +25,7 @@ function FilterMenu({ filter, updateFilter }) {
         value={filter}
         label="Filter"
         className="filter-menu"
-        onChange={(e) => {
+        onChange={e => {
           updateFilter(e.target.value);
         }}
       >

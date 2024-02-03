@@ -14,18 +14,15 @@ function Profile() {
   const { setUser } = useContext(AccountContext);
   const history = useHistory();
 
-  const {
-    provider
-  } = useContext(Web3Context);
+  const { provider } = useContext(Web3Context);
 
-  const signup = async (address) => {
+  const signup = async address => {
     const signer = provider.getSigner();
     const signature = await signer.signMessage(SIGN_IN_MESSAGE);
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/user/signup`,
-        { email, username, address, signature },
-        
+        { email, username, address, signature }
       );
       setUser(response.data.data);
       history.replace("/");
@@ -40,7 +37,7 @@ function Profile() {
     }
   };
 
-  const createAccount = async (e) => {
+  const createAccount = async e => {
     e.preventDefault();
     const accounts = await provider.send("eth_requestAccounts", []);
     signup(accounts[0]);
@@ -53,46 +50,48 @@ function Profile() {
         minHeight: "100vh",
         justifyContent: "center",
         alignItems: "center",
-      }}>
+      }}
+    >
       <form onSubmit={createAccount}>
-        <div className='modal-card mx-auto py-5 px-5'>
-          <h3 className='mb-1'>Create Profile</h3>
-          <p className='mb-4 artist-form-action'>
+        <div className="modal-card mx-auto py-5 px-5">
+          <h3 className="mb-1">Create Profile</h3>
+          <p className="mb-4 artist-form-action">
             Please, fill in the form below to create a profile
           </p>
 
-          <div className='mb-4'>
+          <div className="mb-4">
             <input
-              type='text'
-              className='form-control'
-              id='validationDefault01'
+              type="text"
+              className="form-control"
+              id="validationDefault01"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder='Username'
+              onChange={e => setUsername(e.target.value)}
+              placeholder="Username"
               required
             />
           </div>
 
           <input
-            type='email'
-            className='form-control mb-4'
-            id='validationDefault01'
+            type="email"
+            className="form-control mb-4"
+            id="validationDefault01"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder='Email'
+            onChange={e => setEmail(e.target.value)}
+            placeholder="Email"
             required
           />
 
           <TermsAndConditions />
 
-          <div className='text-center mt-4'>
+          <div className="text-center mt-4">
             <Button
               style={{
                 width: "fit-content",
                 margin: "0 auto",
                 padding: "0 28px",
                 borderRadius: 30,
-              }}>
+              }}
+            >
               Create
             </Button>
           </div>

@@ -33,22 +33,22 @@ function ArtistForm() {
       setGenresLoading(true);
       axios
         .get(`${API_URL}/extra/genres`)
-        .then((res) => {
-          setGenres(res.data.data.map((e) => e.name.toUpperCase()));
+        .then(res => {
+          setGenres(res.data.data.map(e => e.name.toUpperCase()));
         })
         .catch(console.error)
         .finally(() => setGenresLoading(false));
     }
   }, [genresLoading, genres]);
 
-  const handleChange = (e) => {
-    setValues((prevValues) => ({
+  const handleChange = e => {
+    setValues(prevValues => ({
       ...prevValues,
       [e.target.name]: e.target.value,
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     setLoading(true);
 
     try {
@@ -67,7 +67,7 @@ function ArtistForm() {
       const userResponse = await axios.get(`${API_URL}/user/${user.username}`);
       setUser(userResponse.data.data);
       await Promise.resolve(0);
-      history.replace("/creator");
+      history.replace(`/user/${user.username}`);
     } catch (error) {
       // Check if error is axios error
       console.error(error);
@@ -82,65 +82,66 @@ function ArtistForm() {
   };
 
   return (
-    <div className='modal-card mx-auto py-5 px-5'>
-      <h3 className='mb-1'>Become a Creator</h3>
-      <p className='mb-4 artist-form-action'>
+    <div className="modal-card mx-auto py-5 px-5">
+      <h3 className="mb-1">Become a Creator</h3>
+      <p className="mb-4 artist-form-action">
         Please, fill in the form below to become a Creator
       </p>
       <form
-        onSubmit={(e) => {
+        onSubmit={e => {
           e.preventDefault();
           if (!othersPage) setOthersPage(true);
           else handleSubmit(e);
-        }}>
+        }}
+      >
         {!othersPage ? (
           <>
-            <div className='row mb-4'>
-              <div className='col-md-6 first-name'>
+            <div className="row mb-4">
+              <div className="col-md-6 first-name">
                 <input
-                  type='text'
-                  className='form-control'
-                  id='validationDefault01'
-                  placeholder='Firstname'
-                  name='firstName'
+                  type="text"
+                  className="form-control"
+                  id="validationDefault01"
+                  placeholder="Firstname"
+                  name="firstName"
                   required
                   value={values.firstName}
                   onChange={handleChange}
                 />
               </div>
-              <div className='col-md-6'>
+              <div className="col-md-6">
                 <input
-                  type='text'
-                  className='form-control'
-                  id='validationDefault01'
-                  placeholder='Lastname'
+                  type="text"
+                  className="form-control"
+                  id="validationDefault01"
+                  placeholder="Lastname"
                   required
-                  name='lastName'
+                  name="lastName"
                   value={values.lastName}
                   onChange={handleChange}
                 />
               </div>
             </div>
-            <div className='mb-4'>
+            <div className="mb-4">
               <input
-                type='text'
-                className='form-control'
-                id='validationDefault01'
-                placeholder='Telegram ID'
+                type="text"
+                className="form-control"
+                id="validationDefault01"
+                placeholder="Telegram ID"
                 required
-                name='telegramId'
+                name="telegramId"
                 value={values.telegramId}
                 onChange={handleChange}
               />
             </div>
-            <div className='mb-4'>
+            <div className="mb-4">
               <input
-                type='text'
-                className='form-control'
-                id='validationDefault01'
-                placeholder='Twitter ID'
+                type="text"
+                className="form-control"
+                id="validationDefault01"
+                placeholder="Twitter ID"
                 required
-                name='twitterId'
+                name="twitterId"
                 value={values.twitterId}
                 onChange={handleChange}
               />
@@ -159,36 +160,36 @@ function ArtistForm() {
                 }
               `}</style>
               <MultiSelect
-                className='form-control mb-4'
-                id='validationDefault01'
-                placeholder='Genre'
+                className="form-control mb-4"
+                id="validationDefault01"
+                placeholder="Genre"
                 hasSelectAll={false}
-                options={genres.map((e) => ({
+                options={genres.map(e => ({
                   value: e.toUpperCase(),
                   label: e,
                 }))}
-                value={values.genre.map((e) => ({
+                value={values.genre.map(e => ({
                   value: e.toUpperCase(),
                   label: e,
                 }))}
-                onChange={(e) =>
-                  setValues((values) => ({
+                onChange={e =>
+                  setValues(values => ({
                     ...values,
-                    genre: e.map((e) => e.value),
+                    genre: e.map(e => e.value),
                   }))
                 }
                 isCreatable
-                onCreateOption={(e) => {
+                onCreateOption={e => {
                   const option = {
                     value: e.toUpperCase(),
                     label: e,
                   };
-                  setGenres((prevGenres) => [...prevGenres, option.value]);
+                  setGenres(prevGenres => [...prevGenres, option.value]);
                   return option;
                 }}
                 disabled={loading}
-                labelledBy='Select Genre'
-                valueRenderer={(selected) => {
+                labelledBy="Select Genre"
+                valueRenderer={selected => {
                   if (!selected.length) {
                     return "Select Genres";
                   }
@@ -212,18 +213,19 @@ function ArtistForm() {
               disabled={loading}
             /> */}
 
-            <div className='form-control__select'>
+            <div className="form-control__select">
               <select
-                className='form-control mb-4'
-                id='validationDefault01'
+                className="form-control mb-4"
+                id="validationDefault01"
                 required
-                name='chapterPerVolume'
+                name="chapterPerVolume"
                 value={values.chapterPerVolume}
                 onChange={handleChange}
-                disabled={loading}>
+                disabled={loading}
+              >
                 <option>How many chapters per volume</option>
-                <option value='50'>1 - 50</option>
-                <option value='100'>51 - 100</option>
+                <option value="50">1 - 50</option>
+                <option value="100">51 - 100</option>
               </select>
 
               <ArrowDown />
@@ -233,7 +235,7 @@ function ArtistForm() {
           </>
         )}
 
-        <div className='text-center mt-4'>
+        <div className="text-center mt-4">
           <Button
             style={{
               width: "fit-content",
@@ -241,7 +243,8 @@ function ArtistForm() {
               padding: "0 48px",
               borderRadius: 30,
             }}
-            isLoading={loading}>
+            isLoading={loading}
+          >
             {othersPage ? "Submit" : "Go"}
           </Button>
         </div>
