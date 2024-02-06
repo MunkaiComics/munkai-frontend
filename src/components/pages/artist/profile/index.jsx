@@ -29,21 +29,20 @@ const ArtistProfile = () => {
     { label: "Comics", value: "comic" },
     { label: "Books", value: "book" },
     { label: "Poems", value: "poems" },
-    { label: "Articles", value: "articles" },
   ];
   const [selectedSectionName, setSelectedSectionName] = useState("Owned");
   const creatorOptions = ["Owned", "Collections", "Favorites"];
   const [selectedSection, setSelectedSection] = useState(sections[0].value);
-  const [isFound, setIsFound] = useState(!!username);
   const [comicsLoading, setComicsLoading] = useState(false);
   let { user: contextUser } = useContext(AccountContext);
   const isNotCurrentUser = username !== contextUser.username;
   const [artist, setArtist] = useState(
     isNotCurrentUser ? { username, isExtArtist: true } : contextUser
   );
+  const [user] = useState(artist);
   const { theme } = useContext(ThemeContext);
 
-  if (!isFound) {
+  if (!username) {
     throw new RouteNotFoundError();
   }
 
@@ -56,13 +55,9 @@ const ArtistProfile = () => {
         .then(res => {
           setArtist({ ...artist, ...res.data.data.user });
         })
-        .catch(err => {
-          console.error(err.statusCode);
-          setIsFound(false);
-        });
+        .catch(err => {});
     }
-  }, [username]);
-  const user = artist;
+  }, []);
 
   const fetchComics = _.debounce(user => {
     setComicsLoading(true);
@@ -80,10 +75,8 @@ const ArtistProfile = () => {
   });
 
   useEffect(() => {
-    if (!comicsLoading && comics.length === 0) {
-      fetchComics(user);
-    }
-  }, [user, selectedSection]);
+    fetchComics(user);
+  }, [selectedSection]);
 
   const profile = {
     numOfComics: comics.length,

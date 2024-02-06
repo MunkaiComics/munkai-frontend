@@ -20,46 +20,51 @@ function Card(props) {
     }
   };
 
+  console.log(props, "props");
+
   return (
     <div className={"cover-card " + (props.className || "")}>
       <Link
         to={{
           pathname: "/view-comic",
           state: { comic: props },
-        }}>
-        <div className='card br bs'>
-          <div className='image card-img-top zoom-on-hover'>
+        }}
+      >
+        <div className="card br bs">
+          <div className="image card-img-top zoom-on-hover">
             <img
               src={getFileUrl(props.cover || props.img)}
-              className=''
-              alt='cover'
+              className=""
+              alt="cover"
             />
           </div>
-          <div className='card-body content pa-3'>
+          <div className="card-body content pa-3">
             <h5
               style={{
                 textOverflow: "ellipsis",
                 whiteSpace: "nowrap",
                 overflow: "hidden",
-              }}>
+              }}
+            >
               {props.title}
             </h5>
-            <div className='username'>
-              <div className='icon'>
-                <p className='raleway'>
+            <div className="username">
+              <div className="icon">
+                <p className="raleway">
                   {props.chapterCount}{" "}
-                  <span className='iceland pl'>CHAPTERS</span>
+                  <span className="iceland pl">CHAPTERS</span>
                 </p>
               </div>
-              <p className='raleway'>
+              <p className="raleway">
                 {props.likes ? <span>{props.likes}</span> : null}
                 <Button
                   iconButton
-                  variant='transparent'
-                  onClick={(e) => {
+                  variant="transparent"
+                  onClick={e => {
                     e.preventDefault();
                     toggleFavourite();
-                  }}>
+                  }}
+                >
                   <img
                     alt={liked ? "favourite" : "not favourite"}
                     src={liked ? HeartFilled : Heart}
