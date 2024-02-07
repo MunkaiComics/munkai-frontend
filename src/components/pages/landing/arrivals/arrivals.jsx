@@ -31,8 +31,6 @@ function Arrivals() {
     }
   }, []);
 
-  console.log(chapters);
-
   return (
     <div>
       <section className="restricted-width">
@@ -45,20 +43,20 @@ function Arrivals() {
               disableDotsControls
               className="card-list-section__slider"
             >
-              {/* {chapters &&
+              {chapters &&
                 chapters.map((data, index) => (
                   <div style={{ width: 270 }}>
                     <Card
-                      key={data.id}
-                      img={getFileUrl(data.comic.cover)}
-                      title={data.comic.title}
-                      chapter={`Chapter ${data.number}`}
-                      amount={data.views}
-                      username={data.comic.author?.username}
+                      key={data?._id}
+                      img={getFileUrl(data?.comic?.cover)}
+                      title={data?.title}
+                      chapter={`Chapter ${data?.partCount}`}
+                      amount={data?.views}
+                      username={data?.username}
                       {...data}
                     />
                   </div>
-                ))} */}
+                ))}
             </AliceCarousel>
           </div>
         </div>
