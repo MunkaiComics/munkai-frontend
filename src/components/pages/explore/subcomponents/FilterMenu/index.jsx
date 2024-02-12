@@ -29,17 +29,21 @@ function FilterMenu({ filter, updateFilter }) {
           updateFilter(e.target.value);
         }}
       >
-        <MenuItem value="all" className="filter-menu__item">
+        <MenuItem value="comic" className="filter-menu__item">
           {filterMenuIcon}
-          All
+          Comics
         </MenuItem>
-        <MenuItem value="trending" className="filter-menu__item">
+        <MenuItem value="book" className="filter-menu__item">
           {filterMenuIcon}
-          Trending
+          Books
         </MenuItem>
-        <MenuItem value="new" className="filter-menu__item">
+        <MenuItem value="article" className="filter-menu__item">
           {filterMenuIcon}
-          New Arrivals
+          Articles
+        </MenuItem>
+        <MenuItem value="poem" className="filter-menu__item">
+          {filterMenuIcon}
+          Poems
         </MenuItem>
       </Select>
     </FormControl>

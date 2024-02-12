@@ -13,7 +13,7 @@ import { getFileUrl } from "utils/file";
 import Footer from "components/global/footer";
 
 function Explore() {
-  const [filter, setFilter] = useState("all");
+  const [filter, setFilter] = useState("comic");
   const [search, setSearch] = useState("");
   const [chaptersLoading, setChaptersLoading] = useState(false);
   const [chapters, setChapters] = useState(null);
@@ -72,11 +72,13 @@ function Explore() {
               {chapters?.map((data, index) => (
                 <Card
                   key={data.id}
-                  img={getFileUrl(data.comic.cover)}
-                  title={data.comic.title}
-                  chapter={`Chapter ${data.number}`}
-                  amount={data.views ?? 0}
-                  username={data.comic.author?.username}
+                  // img={getFileUrl(data.comic.cover)}
+                  img={""}
+                  title={data?.title}
+                  chapterId={data.id}
+                  chapter={`Chapter ${data.partCount}`}
+                  amount={data?.views ?? 0}
+                  username={data?.author?.username}
                   {...data}
                 />
               ))}

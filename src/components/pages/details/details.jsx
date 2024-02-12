@@ -16,7 +16,7 @@ import { ethers } from "ethers";
 import Button from "components/global/Button";
 import toast from "react-hot-toast";
 
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+const fetcher = url => axios.get(url).then(res => res.data);
 
 function Details() {
   const { user } = useContext(AccountContext);
@@ -50,16 +50,16 @@ function Details() {
       );
       await bUSDTokenContract
         .approve(chaptersContract.address, price)
-        .then((tx) => {
+        .then(tx => {
           setPurchaseProgress("Waiting for transaction to be mined...");
           return provider.waitForTransaction(tx.hash);
         })
-        .then((receipt) => {
+        .then(receipt => {
           if (receipt.status !== 1) {
             throw Error("Transaction failed");
           }
         })
-        .catch((error) => {
+        .catch(error => {
           console.error("Txn Confirm Error: ", error);
           throw error;
         });
