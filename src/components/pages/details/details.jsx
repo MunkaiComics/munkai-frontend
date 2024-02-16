@@ -26,7 +26,7 @@ function Details() {
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
   const { data, error } = useSWR(
-    `${API_URL}/comic/chapter/${chapterId}`,
+    `${API_URL}/publication/part/${chapterId}`,
     fetcher
   );
   const { data: chapter } = data ?? {};
@@ -37,7 +37,7 @@ function Details() {
     error: accessError,
     mutate,
   } = useSWR(
-    `${API_URL}/comic/chapters/has-access?address=${user.address}&chapterId=${chapterId}`,
+    `${API_URL}/publication/parts/has-access?address=${user.address}&partId=${chapterId}`,
     fetcher
   );
 
@@ -45,9 +45,7 @@ function Details() {
     setIsLoading(true);
     try {
       const price = ethers.utils.parseUnits(chapter.price.toString(), 18);
-      setPurchaseProgress(
-        "Requesting approval to spend BUSD for payment to be deducted from your account..."
-      );
+      setPurchaseProgress("Requesting approval to spend BUSD...");
       await bUSDTokenContract
         .approve(chaptersContract.address, price)
         .then((tx) => {

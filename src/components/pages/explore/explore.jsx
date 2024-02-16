@@ -20,14 +20,14 @@ function Explore() {
 
   const fetchChapters = useMemo(
     () =>
-      _.throttle(filter => {
+      _.throttle((filter) => {
         setChaptersLoading(true);
 
         axios
-          .get(`${API_URL}/publication/find`, {
+          .get(`${API_URL}/publication/all-parts`, {
             params: { author: search, type: filter },
           })
-          .then(res => {
+          .then((res) => {
             setChapters(res.data.data);
           })
 
@@ -59,7 +59,7 @@ function Explore() {
                 <input
                   placeholder="Search creators, titles & genres"
                   className="search explore__search-input"
-                  onChange={e => setSearch(e.target.value)}
+                  onChange={(e) => setSearch(e.target.value)}
                 />
               </div>
               <div className="form-group col-auto explore__filter-menu">

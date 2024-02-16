@@ -26,7 +26,7 @@ function UploadChapter() {
   const [chapterNum] = useState((location.state.comic.chapterCount ?? 0) + 1);
   const [chapterPrice, setChapterPrice] = useState(null);
   const [summary, setSummary] = useState("");
-  const { provider, munkTokenContract, chaptersContract } =
+  const { provider, bUSDTokenContract, chaptersContract } =
     useContext(Web3Context);
   const { user } = useContext(AccountContext);
   const history = useHistory();
@@ -51,7 +51,7 @@ function UploadChapter() {
       setUploadProgress("Requesting signature...");
       const signature = await signer.signMessage(UPLOAD_CHAPTER_MESSAGE);
       setUploadProgress("Uploading chapter...");
-      await axios.post(`${API_URL}/comic/add-chapter`, data, {
+      await axios.post(`${API_URL}/publication/add-part`, data, {
         auth: {
           username: user.address,
           password: signature,
@@ -60,7 +60,7 @@ function UploadChapter() {
       toast.success("Chapter uploaded successfully!");
       history.goBack();
     } catch (e) {
-      toast.error("Couldn't create your comic");
+      toast.error("Couldn't create your chapter");
       console.error(e);
     }
     setUploadProgress(null);
@@ -82,10 +82,8 @@ function UploadChapter() {
     try {
       const price = ethers.utils.parseUnits(chapterPrice, 18);
 
-      setUploadProgress(
-        "Requesting approval to spend MUNK for payment to be deducted from your account..."
-      );
-      await munkTokenContract
+      setUploadProgress("Requesting approval...");
+      await bUSDTokenContract
         .approve(
           chaptersContract.address,
           ethers.utils.parseUnits(CHAPTER_MINT_PRICE, 9)
@@ -149,7 +147,7 @@ function UploadChapter() {
 
   return (
     <Layout>
-      <div className='upload-chapter'>
+      <div className="upload-chapter">
         <h1>UPLOAD CHAPTER</h1>
         <style jsx>{`
           .tx-hash {
@@ -175,27 +173,28 @@ function UploadChapter() {
           }
         `}</style>
         {uploadProgress && (
-          <div className='upload-progress alert alert-info'>
+          <div className="upload-progress alert alert-info">
             <p>{uploadProgress}</p>
           </div>
         )}
         {chapterMintTx && (
-          <div className='tx-hash-container py-4'>
+          <div className="tx-hash-container py-4">
             Do not retry this transaction. If your upload doesn't go through,
             please contact support with this hash.
             <br />
             Here's your Transaction Hash.
-            <div className='tx-hash px-3 py-1 bg-white'>
+            <div className="tx-hash px-3 py-1 bg-white">
               {formatTxHash(chapterMintTx)}{" "}
               {isCopied ? (
-                <span className='copied mx-2'>
-                  <i className='fa far fa-check'></i> Copied
+                <span className="copied mx-2">
+                  <i className="fa far fa-check"></i> Copied
                 </span>
               ) : (
                 <button
-                  className='mx-2'
-                  onClick={() => copyHash(chapterMintTx)}>
-                  <i className='fa far fa-copy'></i>
+                  className="mx-2"
+                  onClick={() => copyHash(chapterMintTx)}
+                >
+                  <i className="fa far fa-copy"></i>
                 </button>
               )}
             </div>
@@ -203,43 +202,44 @@ function UploadChapter() {
         )}
 
         <form
-          className='upload-chapter__form'
+          className="upload-chapter__form"
           onSubmit={(e) => {
             e.preventDefault();
             if (!isLoading) {
               mintChapter();
             }
-          }}>
+          }}
+        >
           <div>
             <FileUpload
-              accept='application/pdf'
+              accept="application/pdf"
               updateSelected={setChapterFile}
-              placeholder='Upload pdf'
+              placeholder="Upload pdf"
               maxSizeInMb={10}
             />
-            <div className='row '>
-              <div className='col-5'>
-                <label htmlFor='chapterNumberInput' className='form-label'>
+            <div className="row ">
+              <div className="col-5">
+                <label htmlFor="chapterNumberInput" className="form-label">
                   Chapter No.
                 </label>
                 <input
-                  type='number'
-                  id='chapterNumberInput'
-                  placeholder='Chapter Number'
-                  className='form-control'
+                  type="number"
+                  id="chapterNumberInput"
+                  placeholder="Chapter Number"
+                  className="form-control"
                   value={chapterNum}
                   disabled
                 />
               </div>
-              <div className='col-7'>
-                <label htmlFor='chapterPriceInput' className='form-label'>
+              <div className="col-7">
+                <label htmlFor="chapterPriceInput" className="form-label">
                   Price
                 </label>
                 <input
-                  type='number'
-                  id='chapterPriceInput'
-                  placeholder='0 BUSD'
-                  className='form-control'
+                  type="number"
+                  id="chapterPriceInput"
+                  placeholder="0 BUSD"
+                  className="form-control"
                   value={chapterPrice}
                   onChange={(e) => setChapterPrice(e.target.value)}
                   disabled={isLoading}
@@ -249,7 +249,7 @@ function UploadChapter() {
           </div>
           <div>
             <textarea
-              placeholder='Comic Summary'
+              placeholder="Chapter Summary"
               value={summary}
               onChange={(e) => setSummary(e.target.value)}
               disabled={isLoading}

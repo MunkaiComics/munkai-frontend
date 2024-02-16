@@ -16,8 +16,8 @@ function Arrivals() {
     setChaptersLoading(true);
 
     axios
-      .get(`${API_URL}/publication`, { params: { type: "new" } })
-      .then(res => {
+      .get(`${API_URL}/publication/parts/find?`, { params: { type: "new" } })
+      .then((res) => {
         setChapters(res.data.data);
       })
 

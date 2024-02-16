@@ -54,7 +54,7 @@ function CreateComic() {
       });
       history.goBack();
     } catch (e) {
-      toast.error("Couldn't create your comic");
+      toast.error("Couldn't create your Publication");
       console.error(e);
     } finally {
       setLoading(false);
@@ -95,7 +95,7 @@ function CreateComic() {
             />
             <input
               type="text"
-              placeholder="Comic Title"
+              placeholder="Publication Title"
               value={title}
               required
               disabled={loading}
@@ -105,12 +105,13 @@ function CreateComic() {
               style={{ padding: "16px" }}
               onChange={(e) => setType(e.target.value)}
             >
+              <option value="type">Select Type</option>
               <option value="comic">Comic</option>
               <option value="book">Book</option>
               <option value="poem">Poem</option>
             </select>
             <textarea
-              placeholder="Comic Summary"
+              placeholder="Publication Summary"
               value={summary}
               required
               maxLength={300}

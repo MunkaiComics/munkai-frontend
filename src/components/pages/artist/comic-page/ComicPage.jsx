@@ -27,15 +27,15 @@ function ComicPage() {
     [chapters, location.state.comic]
   );
 
-  const fetchChapters = _.debounce(comic => {
+  const fetchChapters = _.debounce((comic) => {
     setChaptersLoading(true);
     axios
-      .get(`${API_URL}/comic/get`, { params: { id: comic.id } })
-      .then(res => {
+      .get(`${API_URL}/publication/get`, { params: { id: comic.id } })
+      .then((res) => {
         location.state.comic = res.data.data;
       })
       .then(() =>
-        axios.get(`${API_URL}/comic/${comic.id}/chapters`).then(res => {
+        axios.get(`${API_URL}/publication/${comic.id}/parts`).then((res) => {
           setChapters(res.data.data);
         })
       )
@@ -45,7 +45,7 @@ function ComicPage() {
 
   useEffect(() => {
     fetchChapters(comic);
-  }, [fetchChapters]);
+  }, []);
 
   return (
     <Layout>
@@ -54,7 +54,7 @@ function ComicPage() {
           <div className="comic-page__details__info">
             <h1 className="comic-page__details__header">{comic?.title}</h1>
             <p className="comic-page__details__description">
-              {/* {comic?.description} */}
+              {comic?.description}
             </p>
           </div>
           <div className="comic-page__details__image">
@@ -66,7 +66,9 @@ function ComicPage() {
 
         <div className="comic-page__chapters">
           <div className="comic-page__chapters__header">
-            <h2>{/* <span>{comic?.chapterCount}</span> CHAPTERS */}</h2>
+            <h2>
+              <span>{comic?.chapterCount}</span> CHAPTERS
+            </h2>
             {user.id &&
               comic?.author &&
               (user.id === comic?.author || user.id === comic?.author.id) && (

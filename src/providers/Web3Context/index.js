@@ -7,8 +7,6 @@ export const Web3Context = React.createContext({
   disconnectWallet: () => {},
   loading: false,
   /** @type { import("ethers").Contract | null } */
-  munkTokenContract: null,
-  /** @type { import("ethers").Contract | null } */
   chaptersContract: null,
   /** @type { import("ethers").Contract | null } */
   bUSDTokenContract: null,
