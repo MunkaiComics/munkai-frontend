@@ -62,9 +62,12 @@ const ArtistProfile = () => {
   const fetchComics = _.debounce(user => {
     setComicsLoading(true);
     axios
-      .get(`${API_URL}/publication/find`, {
-        params: { author: user.username, type: selectedSection },
-      })
+      .get(
+        `${API_URL}/publication/find/${selectedSectionName.toLocaleLowerCase()}`,
+        {
+          params: { author: user.username, type: selectedSection },
+        }
+      )
       .then(res => {
         setComics(res.data.data);
       })
@@ -76,7 +79,7 @@ const ArtistProfile = () => {
 
   useEffect(() => {
     fetchComics(user);
-  }, [selectedSection]);
+  }, [selectedSection, selectedSectionName]);
 
   const profile = {
     numOfComics: comics.length,
