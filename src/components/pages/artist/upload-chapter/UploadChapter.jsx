@@ -26,7 +26,7 @@ function UploadChapter() {
   const [chapterNum] = useState((location.state.comic.chapterCount ?? 0) + 1);
   const [chapterPrice, setChapterPrice] = useState(null);
   const [summary, setSummary] = useState("");
-  const { provider, munkTokenContract, chaptersContract } =
+  const { provider, bUSDTokenContract, chaptersContract } =
     useContext(Web3Context);
   const { user } = useContext(AccountContext);
   const history = useHistory();
@@ -45,9 +45,9 @@ function UploadChapter() {
 
       return form;
     };
-    const data = getRequestData();
+    const data =  getRequestData();
     try {
-      const signer = provider.getSigner();
+      const signer = await provider.getSigner();
       setUploadProgress("Requesting signature...");
       const signature = await signer.signMessage(UPLOAD_CHAPTER_MESSAGE);
       setUploadProgress("Uploading chapter...");
@@ -85,10 +85,12 @@ function UploadChapter() {
       setUploadProgress(
         "Requesting approval to spend MUNK for payment to be deducted from your account..."
       );
-      await munkTokenContract
+      
+      console.log(bUSDTokenContract)
+      await bUSDTokenContract
         .approve(
           chaptersContract.address,
-          ethers.utils.parseUnits(CHAPTER_MINT_PRICE, 9)
+          ethers.utils.parseUnits(CHAPTER_MINT_PRICE, 18)
         )
         .then((tx) => {
           setUploadProgress("Waiting for transaction to be mined...");
